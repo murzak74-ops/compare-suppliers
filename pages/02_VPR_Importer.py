@@ -169,7 +169,7 @@ def normalize_rows(df: pd.DataFrame, art_col: str, price_col: str, brand_col: Op
 # =============================
 # 1) БАЗОВАЯ РАСЦЕНКА (обязательно)
 # =============================
-st.subheader("1) Загрузите базовую расценку")
+st.subheader("1) Загрузите заявку")
 st.caption("Минимум одна колонка с артикулами. Колонка количества — опционально.")
 base_file = st.file_uploader("Базовая расценка (Excel)", type=["xlsx", "xls"], key="base")
 base_df = None
@@ -198,7 +198,7 @@ if base_file:
 # =============================
 # 2) ПРАЙСЫ ПОСТАВЩИКОВ (VPR)
 # =============================
-st.subheader("2) Загрузите прайсы поставщиков (VPR)")
+st.subheader("2) Загрузите расценку отпоставщиков")
 st.caption("Поддерживаются Excel (XLS/XLSX) и цифровые PDF. Сканам требуется OCR (не входит).")
 vpr_files = st.file_uploader("Прайсы (Excel/PDF)", type=["xlsx","xls","pdf"], accept_multiple_files=True, key="vprs")
 decimal_sep = st.selectbox("Десятичный разделитель в ценах VPR", [",", "."], index=0)
@@ -277,7 +277,7 @@ if vpr_files:
 # 3) СВЯЗЫВАНИЕ С БАЗОЙ -> WIDE
 # =============================
 if base_df is None:
-    st.info("Загрузите базовую расценку (п.1).")
+    st.info("Загрузите базовую заявку (п.1).")
     st.stop()
 
 if not all_offers:
