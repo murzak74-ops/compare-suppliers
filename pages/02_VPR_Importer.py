@@ -37,7 +37,7 @@ if not st.session_state.authenticated:
 # предложения из множества прайсов (Excel + цифровые PDF), выдать ОДНУ СТРОКУ на артикул
 # с блоками Цена_i / Поставщик_i / Производитель_i по возрастанию цены.
 
-st.set_page_config(page_title="VPR Importer", page_icon="🧩", layout="wide")
+st.set_page_config(page_title="Рабочий орган", page_icon="🧩", layout="wide")
 
 # ---------- PDF Support ----------
 try:
