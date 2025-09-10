@@ -23,6 +23,7 @@ if not st.session_state.authenticated:
         if email.strip().lower() in [e.lower() for e in AUTHORIZED_EMAILS]:
             st.session_state.authenticated = True
             st.success("Добро пожаловать ✅")
+            st.rerun()  # 🔥 теперь работает в новых версиях Streamlit
         else:
             st.error("❌ У вас нет доступа к этому приложению")
     st.stop()
