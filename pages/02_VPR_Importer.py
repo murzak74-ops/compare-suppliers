@@ -4,6 +4,30 @@ import io
 import os
 import re
 from typing import List, Optional, Dict, Tuple
+# --------------------------
+# 1. Авторизация по e-mail
+# --------------------------
+AUTHORIZED_EMAILS = [
+    "rab.org@bk.ru",
+    "rab-organ@yandex.ru",
+    "ooo.rab.org@gmail.com",
+]
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.title("🔒 Доступ только для своих")
+    email = st.text_input("Введите ваш e-mail")
+    if st.button("Войти"):
+        if email.strip().lower() in [e.lower() for e in AUTHORIZED_EMAILS]:
+            st.session_state.authenticated = True
+            st.success("Добро пожаловать ✅")
+        else:
+            st.error("❌ У вас нет доступа к этому приложению")
+    st.stop()
+
+# ---- Стилизация ----
 
 # ==============================
 # VPR Importer (Standalone, v2)
