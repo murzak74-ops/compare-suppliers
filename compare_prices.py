@@ -15,13 +15,15 @@ if "authenticated" not in st.session_state:
 
 if not st.session_state.authenticated:
     st.title("🔒 Доступ только для своих")
-    email = st.text_input("Логин помнишь, да?")
-    if st.button("Войти"):
-        if email.strip().lower() in [e.lower() for e in AUTHORIZED_EMAILS]:
-            st.session_state.authenticated = True
-            st.success("Добро пожаловать ✅")
-        else:
-            st.error("❌ У вас нет доступа к этому приложению")
+    with st.form("login_form"):
+        email = st.text_input("Логин помнишь, да?")
+        submit = st.form_submit_button("Войти")
+        if submit:
+            if email.strip().lower() in [e.lower() for e in AUTHORIZED_EMAILS]:
+                st.session_state.authenticated = True
+                st.success("Добро пожаловать ✅")
+            else:
+                st.error("❌ У вас нет доступа к этому приложению")
     st.stop()
 
 # ---- Стилизация ----
@@ -294,4 +296,5 @@ if uploaded_file:
 
     except Exception as e:
         st.error(f"Ошибка при обработке файла: {e}")
+
 
