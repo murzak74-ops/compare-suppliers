@@ -198,7 +198,7 @@ if base_file:
 # =============================
 # 2) ПРАЙСЫ ПОСТАВЩИКОВ (VPR)
 # =============================
-st.subheader("2) Загрузите расценку отпоставщиков")
+st.subheader("2) Загрузите расценку от поставщиков")
 st.caption("Поддерживаются Excel (XLS/XLSX) и цифровые PDF. Сканам требуется OCR (не входит).")
 vpr_files = st.file_uploader("Прайсы (Excel/PDF)", type=["xlsx","xls","pdf"], accept_multiple_files=True, key="vprs")
 decimal_sep = st.selectbox("Десятичный разделитель в ценах VPR", [",", "."], index=0)
