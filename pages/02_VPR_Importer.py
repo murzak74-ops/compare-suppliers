@@ -18,7 +18,7 @@ if "authenticated" not in st.session_state:
 
 if not st.session_state.authenticated:
     st.title("🔒 Доступ только для своих")
-    email = st.text_input("Введите ваш e-mail")
+    email = st.text_input("Логин помнишь, да?")
     if st.button("Войти"):
         if email.strip().lower() in [e.lower() for e in AUTHORIZED_EMAILS]:
             st.session_state.authenticated = True
